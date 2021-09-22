@@ -1,7 +1,7 @@
 'use strict'
 import { nameOfImage, page, limit } from './apiService';
 
-export function fetchImages() {
+export function fetchImages() { //get information from backend
   const params = new URLSearchParams({
     "q": nameOfImage,
     "page": page,

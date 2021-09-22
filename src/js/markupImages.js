@@ -1,4 +1,5 @@
 'use strict'
+
 export function markupImages(images) { //формирует разметку карточки
     // console.log(images);
     return images.map(({ webformatURL, tags, likes, views, comments, downloads }) => {
