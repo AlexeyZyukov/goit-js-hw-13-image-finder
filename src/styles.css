@@ -2,6 +2,10 @@ html {
   box-sizing: border-box;
 }
 
+* {
+  outline: 1px solid #ee3131;
+}
+
 *,
 *::before,
 *::after {
@@ -32,6 +36,55 @@ body {
 
 p {
   margin: 0;
+}
+
+.btn{
+  border-radius: 3px;
+}
+/*grid*/
+/* .gallery {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #d6eafa;
+  padding: 10px;
+}
+
+.photo-card {
+  background-color: #f3f8c5cc;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+} */
+/*============================================
+/*flex*/
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.photo-card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: calc((100% - 10px * 3) / 3);
+  align-content: space-between;
+  padding: 10px;
+  margin-right: auto;
+  margin-bottom: 10px;
+  background-color: #caf8f8;
+  border-radius: 5%;
+  overflow: hidden;
+}
+
+.stats {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-self: flex-end;
+}
+
+.stats-item {
+  font-size: 20px;
+  text-align: left;
 }
 
 .posts {

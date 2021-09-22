@@ -1,7 +1,7 @@
 'use strict'
 
 import { fetchImagesBtn, searchForm, inputField, imagesList, alertPopup } from './constants';
-import { markupImages } from './markupImages';
+import { fetchImages } from './fetch';
 
 
 
@@ -96,55 +96,55 @@ function buttonTextAmendOnPageInctease() {
 //   })
 //   .catch((error) => console.log(error));
 //=========================
-function fetchImages() {
-  const params = new URLSearchParams({
-    "q": nameOfImage,
-    "page": page,
-    "per_page": limit,
-    "image_type": "photo",
-  });
+// function fetchImages() {
+//   const params = new URLSearchParams({
+//     "q": nameOfImage,
+//     "page": page,
+//     "per_page": limit,
+//     "image_type": "photo",
+//   });
 
-  //https://pixabay.com/api/?key=22969480-c3583c2b4b1ca4646f49ed52f${params}
-  return fetch(`https://pixabay.com/api/?key=22969480-c3583c2b4b1ca4646f49ed52f&${params}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(response.status);
-      }
-      //console.log(response);
-      // return Array.from(response.json()); //при преобразовании возвращаемого Json-объекта с пом. Array.from в массив "теряется" св-во length, length = 0;
-      return response.json();
-    }
-    );
-}
+//   //https://pixabay.com/api/?key=22969480-c3583c2b4b1ca4646f49ed52f${params}
+//   return fetch(`https://pixabay.com/api/?key=22969480-c3583c2b4b1ca4646f49ed52f&${params}`)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error(response.status);
+//       }
+//       //console.log(response);
+//       // return Array.from(response.json()); //при преобразовании возвращаемого Json-объекта с пом. Array.from в массив "теряется" св-во length, length = 0;
+//       return response.json();
+//     }
+//     );
+// }
 
-// function markupImages(images) { //формирует разметку карточки
-//   // console.log(images);
-//   return images.map(({ webformatURL, tags, likes, views, comments, downloads }) => {
-//     return `<div class="photo-card">
-//   <img src=${webformatURL} alt=${tags} />
+function markupImages(images) { //формирует разметку карточки
+  // console.log(images);
+  return images.map(({ webformatURL, tags, likes, views, comments, downloads }) => {
+    return `<div class="photo-card">
+  <img src=${webformatURL} alt=${tags} />
 
-//   <div class="stats">
-//     <p class="stats-item">
-//       <i class="material-icons">thumb_up</i>
-//       ${likes}
-//     </p>
-//     <p class="stats-item">
-//       <i class="material-icons">visibility</i>
-//       ${views}
-//     </p>
-//     <p class="stats-item">
-//       <i class="material-icons">comment</i>
-//       ${comments}
-//     </p>
-//     <p class="stats-item">
-//       <i class="material-icons">cloud_download</i>
-//       ${downloads}
-//     </p>
-//   </div>
-// </div>`;
-//   })
-//     .join("");
-// };
+  <div class="stats">
+    <p class="stats-item">
+      <i class="material-icons">thumb_up</i>
+      ${likes}
+    </p>
+    <p class="stats-item">
+      <i class="material-icons">visibility</i>
+      ${views}
+    </p>
+    <p class="stats-item">
+      <i class="material-icons">comment</i>
+      ${comments}
+    </p>
+    <p class="stats-item">
+      <i class="material-icons">cloud_download</i>
+      ${downloads}
+    </p>
+  </div>
+</div>`;
+  })
+    .join("");
+};
 
 function renderImages(value) {
   const markup = markupImages(value)
