@@ -1,5 +1,5 @@
 'use strict'
-import { nameOfImage, page, limit } from './constants';
+import { nameOfImage, page, limit } from './apiService';
 
 export function fetchImages() {
   const params = new URLSearchParams({
