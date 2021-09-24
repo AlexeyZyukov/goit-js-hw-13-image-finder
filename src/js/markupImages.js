@@ -1,9 +1,9 @@
 'use strict'
 
 export function markupImages(images) { //формирует разметку карточки
-    // console.log(images);
-    return images.map(({ webformatURL, tags, likes, views, comments, downloads }) => {
-        return `<div class="photo-card">
+  // console.log(images);
+  return images.map(({ webformatURL, tags, likes, views, comments, downloads }) => {
+    return `<div class="photo-card">
   <img src=${webformatURL} alt=${tags} />
 
   <div class="stats">
@@ -25,6 +25,6 @@ export function markupImages(images) { //формирует разметку к�
     </p>
   </div>
 </div>`;
-    })
-        .join("");
+  })
+    .join("");
 };

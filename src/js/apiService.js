@@ -6,8 +6,8 @@ import { fetchImages } from './fetch';
 
 
 
-console.log(inputField.value)
-console.log(imagesList);
+// console.log(inputField.value)
+// console.log(imagesList);
 
 let isAlertVisible = false;
 
@@ -17,27 +17,61 @@ let nameOfImage = ""; //select name of the image
 export { nameOfImage, page, limit };
 
 
-fetchImagesBtn.addEventListener("click", () => {
+fetchImagesBtn.addEventListener("click", (event) => {
+  event.preventDefault()
   if (!inputField.value) {
     alert('Введите название изображения')
     return
   }
+  if (nameOfImage) {
+    if (nameOfImage !== inputField.value) {
+      // console.log(inputField.value, nameOfImage);
+      nameOfImage = inputField.value;
+      // console.log(nameOfImage);
+      clearContent();
+      // console.log(nameOfImage);
+    }
+  }
   else {
     nameOfImage = inputField.value;
-    console.log(nameOfImage)
+    // console.log(nameOfImage)
   }
 
   fetchImages()
     .then((images) => {
       const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
-      console.log(totalPages);
-      console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
+      // console.log(totalPages);
+      // console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
 
       buttonTextAmendOnPageIncrease(totalPages)
     })
     .catch((error) => console.log(error));
 });
+//=================================================
+// searchForm.addEventListener("keyup", (event) => { //попытка сделать ввод через Enter
+//   event.preventDefault();
+//   if (event.key === "Enter") {
+//     if (!inputField.value) {
+//       alert('Введите название изображения')
+//       return
+//     }
+//     else {
+//       nameOfImage = inputField.value;
+//       console.log(nameOfImage)
+//     }
+//   }
+//   fetchImages()
+//     .then((images) => {
+//       const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
+//       console.log(totalPages);
+//       console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
+//       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
+
+//       buttonTextAmendOnPageIncrease(totalPages)
+//     })
+//     .catch((error) => console.log(error));
+// })
 //=================================
 //update text of button when page number inreased
 function buttonTextAmendOnPageIncrease(value) {
@@ -72,9 +106,7 @@ function toggleAlertPopup() {
 };
 
 function clearContent() {
-  // input.value = "";
-  result.innerHTML = "";
-  countryList.innerHTML = '';
+  imagesList.innerHTML = '';
 };
 
 

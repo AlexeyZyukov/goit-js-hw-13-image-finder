@@ -1,4 +1,5 @@
 'use strict'
+import axios from 'axios';
 import { nameOfImage, page, limit } from './apiService';
 
 export function fetchImages() { //get information from backend
@@ -19,4 +20,6 @@ export function fetchImages() { //get information from backend
       return response.json();
     }
     );
+  // return axios.get(`https://pixabay.com/api/?key=22969480-c3583c2b4b1ca4646f49ed52f&${params}`)
+  //   .then(result => console.log(result));
 }
