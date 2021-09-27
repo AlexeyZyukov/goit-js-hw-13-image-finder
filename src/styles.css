@@ -38,7 +38,7 @@ p {
   margin: 0;
 }
 
-.btn{
+.btn {
   border-radius: 3px;
 }
 /*grid*/
@@ -87,7 +87,24 @@ p {
   text-align: left;
 }
 
-.posts {
+.alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+  background-color: tomato;
+  color: #fff;
+  transform: translatey(-100%);
+  transition: transform 250ms ease-in-out;
+}
+
+.alert.is-visible {
+  transform: translatey(0);
+}
+
+/*.posts {
   margin: 0;
   list-style: none;
   margin-bottom: 16px;
@@ -110,21 +127,4 @@ p {
 
 .post-body {
   margin: 0;
-}
-
-.alert {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 8px;
-  text-align: center;
-  background-color: tomato;
-  color: #fff;
-  transform: translatey(-100%);
-  transition: transform 250ms ease-in-out;
-}
-
-.alert.is-visible {
-  transform: translatey(0);
-}
+} */

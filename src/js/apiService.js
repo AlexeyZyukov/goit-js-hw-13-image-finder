@@ -1,6 +1,6 @@
 'use strict'
 
-import { fetchImagesBtn, searchForm, inputField, imagesList, alertPopup } from './constants';
+import { fetchImagesBtn, searchForm, inputField, imagesList, lightbox, lightboxImage, lightboxClose, alertPopup } from './constants';
 import { markupImages } from './markupImages';
 import { fetchImages } from './fetch';
 
@@ -22,6 +22,14 @@ fetchImagesBtn.addEventListener("click", (event) => {
   if (!inputField.value) {
     alert('Введите название изображения')
     return
+  }
+  if (nameOfImage) {
+    if (nameOfImage === inputField.value) {
+      // console.log(inputField.value, nameOfImage); 
+      // console.log(nameOfImage);
+      alert("Такой тип изображений уже в поиске, введите другое название")
+      return
+    }
   }
   if (nameOfImage) {
     if (nameOfImage !== inputField.value) {
@@ -49,12 +57,25 @@ fetchImagesBtn.addEventListener("click", (event) => {
     .catch((error) => console.log(error));
 });
 //=================================================
-// searchForm.addEventListener("keyup", (event) => { //попытка сделать ввод через Enter
-//   event.preventDefault();
+// inputField.addEventListener("keydown", (event) => { // сделать ввод через Enter
+
+
 //   if (event.key === "Enter") {
+//     event.preventDefault();
+//     alert('Enter key pressed');
+
 //     if (!inputField.value) {
 //       alert('Введите название изображения')
 //       return
+//     }
+//     if (nameOfImage) {
+//       if (nameOfImage !== inputField.value) {
+//         // console.log(inputField.value, nameOfImage);
+//         nameOfImage = inputField.value;
+//         // console.log(nameOfImage);
+//         clearContent();
+//         // console.log(nameOfImage);
+//       }
 //     }
 //     else {
 //       nameOfImage = inputField.value;
@@ -93,6 +114,10 @@ function renderImages(value) {
   imagesList.insertAdjacentHTML("beforeend", markup);
 };
 
+function clearContent() {
+  imagesList.innerHTML = '';
+};
+
 function toggleAlertPopup() {
   if (isAlertVisible) {
     return;
@@ -105,9 +130,6 @@ function toggleAlertPopup() {
   }, 4000);
 };
 
-function clearContent() {
-  imagesList.innerHTML = '';
-};
 
 
 //=================================================================
