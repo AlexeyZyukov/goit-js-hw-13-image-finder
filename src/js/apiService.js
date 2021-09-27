@@ -1,6 +1,6 @@
 'use strict'
 
-import { fetchImagesBtn, searchForm, inputField, imagesList, lightbox, lightboxImage, lightboxClose, alertPopup } from './constants';
+import { fetchImagesBtnInitial, fetchImagesBtnAdditional, searchForm, inputField, imagesList, lightbox, lightboxImage, lightboxClose, alertPopup } from './constants';
 import { markupImages } from './markupImages';
 import { fetchImages } from './fetch';
 
@@ -17,7 +17,7 @@ let nameOfImage = ""; //select name of the image
 export { nameOfImage, page, limit };
 
 
-fetchImagesBtn.addEventListener("click", (event) => {
+fetchImagesBtnInitial.addEventListener("click", (event) => {
   event.preventDefault()
   if (!inputField.value) {
     alert('Введите название изображения')
@@ -47,12 +47,13 @@ fetchImagesBtn.addEventListener("click", (event) => {
 
   fetchImages()
     .then((images) => {
-      const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
+      // const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
       // console.log(totalPages);
       // console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
 
-      buttonTextAmendOnPageIncrease(totalPages)
+      buttonShowOnPageIncrease()
+
     })
     .catch((error) => console.log(error));
 });
@@ -94,20 +95,35 @@ fetchImagesBtn.addEventListener("click", (event) => {
 //     .catch((error) => console.log(error));
 // })
 //=================================
-//update text of button when page number inreased
-function buttonTextAmendOnPageIncrease(value) {
+//Show add_button when page number inreased
+function buttonShowOnPageIncrease(value) {
   page += 1;
   console.log(page);
 
-  // Replace button text after first request
+  // Show button with text after first request
   if (page > 1) {
-    fetchImagesBtn.textContent = "Показать больше изображений";
+    fetchImagesBtnAdditional.classList.add("is-visible");
+    //fetchImagesBtnAdditional.textContent = "Показать больше изображений";
   }
   // Check the end of the collection to display an alert
   if (page > value) {
     return toggleAlertPopup();
   }
 }
+//==========================
+fetchImagesBtnAdditional.addEventListener('click', (event) => {
+  event.preventDefault;
+  fetchImages()
+    .then((images) => {
+      const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
+      // console.log(totalPages);
+      // console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
+      renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
+
+      buttonShowOnPageIncrease(totalPages)
+    })
+    .catch((error) => console.log(error));
+});
 //=========================
 function renderImages(value) {
   const markup = markupImages(value)

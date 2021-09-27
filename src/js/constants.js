@@ -1,6 +1,7 @@
 'use strict'
 
-const fetchImagesBtn = document.querySelector(".btn");
+const fetchImagesBtnInitial = document.querySelector(".fetch-initial");
+const fetchImagesBtnAdditional = document.querySelector(".fetch-additional");
 const searchForm = document.querySelector("#search-form")
 const inputField = document.querySelector('[name="query"]')
 const imagesList = document.querySelector(".gallery");
@@ -11,4 +12,4 @@ const lightboxClose = document.querySelector('button[data-action="close-lightbox
 
 
 
-export { fetchImagesBtn, searchForm, inputField, imagesList, lightbox, lightboxImage, lightboxClose, alertPopup };
+export { fetchImagesBtnInitial, fetchImagesBtnAdditional, searchForm, inputField, imagesList, lightbox, lightboxImage, lightboxClose, alertPopup };
