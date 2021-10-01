@@ -1,12 +1,12 @@
 'use strict'
 
-import { fetchImagesBtn, searchForm, inputField, imagesList, alertPopup } from './constants';
+import { fetchImagesBtn, searchForm, inputField, galleryImagesList, alertPopup } from './constants';
 import { fetchImages } from './fetch';
 
 
 
 console.log(inputField.value)
-console.log(imagesList);
+console.log(galleryImagesList);
 
 let isAlertVisible = false;
 // Controls the group number
@@ -148,7 +148,7 @@ function markupImages(images) { //формирует разметку карто
 
 function renderImages(value) {
   const markup = markupImages(value)
-  imagesList.insertAdjacentHTML("beforeend", markup);
+  galleryImagesList.insertAdjacentHTML("beforeend", markup);
 };
 
 function toggleAlertPopup() {
@@ -242,5 +242,5 @@ function clearContent() {
 // }
 // function renderImages(images) {
 //   const markup = markupImages(images)
-//   imagesList.insertAdjacentHTML("beforeend", markup);
+//   galleryImagesList.insertAdjacentHTML("beforeend", markup);
 // }

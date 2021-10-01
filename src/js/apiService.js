@@ -1,13 +1,14 @@
 'use strict'
 
-import { fetchImagesBtnInitial, fetchImagesBtnAdditional, searchForm, inputField, imagesList, lightbox, lightboxImage, lightboxClose, alertPopup } from './constants';
+import { fetchImagesBtnAdditional, searchForm, inputField, galleryImagesList, alertPopup } from './constants';
 import { markupImages } from './markupImages';
 import { fetchImages } from './fetch';
+import { openModal } from './modal';
 
 
 
 // console.log(inputField.value)
-// console.log(imagesList);
+// console.log(galleryImagesList);
 
 let isAlertVisible = false;
 
@@ -16,8 +17,9 @@ let limit = 12; // Controls the quantity of items in the group to display
 let nameOfImage = ""; //select name of the image
 export { nameOfImage, page, limit };
 
+galleryImagesList.addEventListener('click', openModal);
 
-fetchImagesBtnInitial.addEventListener("click", (event) => {
+searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
   if (!inputField.value) {
     alert('Введите название изображения')
@@ -49,7 +51,7 @@ fetchImagesBtnInitial.addEventListener("click", (event) => {
     .then((images) => {
       // const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
       // console.log(totalPages);
-      // console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
+      console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
 
       buttonShowOnPageIncrease()
@@ -58,43 +60,7 @@ fetchImagesBtnInitial.addEventListener("click", (event) => {
     .catch((error) => console.log(error));
 });
 //=================================================
-// inputField.addEventListener("keydown", (event) => { // сделать ввод через Enter
 
-
-//   if (event.key === "Enter") {
-//     event.preventDefault();
-//     alert('Enter key pressed');
-
-//     if (!inputField.value) {
-//       alert('Введите название изображения')
-//       return
-//     }
-//     if (nameOfImage) {
-//       if (nameOfImage !== inputField.value) {
-//         // console.log(inputField.value, nameOfImage);
-//         nameOfImage = inputField.value;
-//         // console.log(nameOfImage);
-//         clearContent();
-//         // console.log(nameOfImage);
-//       }
-//     }
-//     else {
-//       nameOfImage = inputField.value;
-//       console.log(nameOfImage)
-//     }
-//   }
-//   fetchImages()
-//     .then((images) => {
-//       const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
-//       console.log(totalPages);
-//       console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
-//       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
-
-//       buttonTextAmendOnPageIncrease(totalPages)
-//     })
-//     .catch((error) => console.log(error));
-// })
-//=================================
 //Show add_button when page number inreased
 function buttonShowOnPageIncrease(value) {
   page += 1;
@@ -118,8 +84,8 @@ fetchImagesBtnAdditional.addEventListener('click', (event) => {
       const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
       // console.log(totalPages);
       // console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
-      renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
-
+      renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json; 
+      //при обращении к значению объекта hits => Array, св - во length сохраняется
       buttonShowOnPageIncrease(totalPages)
     })
     .catch((error) => console.log(error));
@@ -127,11 +93,11 @@ fetchImagesBtnAdditional.addEventListener('click', (event) => {
 //=========================
 function renderImages(value) {
   const markup = markupImages(value)
-  imagesList.insertAdjacentHTML("beforeend", markup);
+  galleryImagesList.insertAdjacentHTML("beforeend", markup);
 };
 
 function clearContent() {
-  imagesList.innerHTML = '';
+  galleryImagesList.innerHTML = '';
 };
 
 function toggleAlertPopup() {

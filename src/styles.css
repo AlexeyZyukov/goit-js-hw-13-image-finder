@@ -41,6 +41,10 @@ p {
 .btn {
   border-radius: 3px;
 }
+
+/* .is-visible {
+  opacity: 1;
+} */
 /*grid*/
 /* .gallery {
   display: grid;
@@ -60,6 +64,9 @@ p {
 }
 .fetch-additional.is-visible {
   opacity: 1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
 }
 /*============================================
 /*flex*/
@@ -92,6 +99,23 @@ p {
 .stats-item {
   font-size: 20px;
   text-align: left;
+}
+
+.scroll_to_top {
+  opacity: 0;
+}
+
+.scroll_to_top.is-visible {
+  opacity: 0.5;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  background-color: #ee3131;
+  color: aquamarine;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 18px;
 }
 
 .alert {

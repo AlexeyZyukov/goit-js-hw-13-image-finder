@@ -1,11 +1,12 @@
 'use strict'
 
+
 export function markupImages(images) { //формирует разметку карточки
   // console.log(images);
   return images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
     return `<div class="photo-card">
-  <a class="photo-card__link" href=${largeImageURL}>
-  <img src=${webformatURL} alt=${tags} />
+ 
+  <img src=${webformatURL} alt=${tags} data-source=${largeImageURL} />
 
   <div class="stats">
     <p class="stats-item">
@@ -25,7 +26,7 @@ export function markupImages(images) { //формирует разметку к�
       ${downloads}
     </p>
   </div>
-  </a>
+  
 </div>`;
   })
     .join("");
