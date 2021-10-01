@@ -10,12 +10,13 @@ export function openModal(event) {
     event.preventDefault()
     lightbox.classList.add('is-open')
     lightboxImage.src = `${event.target.dataset.source}`; //получено из разметки функции createGalleryItem
+    console.dir(event.target)
     lightboxImage.alt = event.target.alt; //получено из разметки функции createGalleryItem
 };
 
 
 //====== close modal window =========
-lightboxClose.addEventListener('click', overlayWindowClose);
+// lightboxClose.addEventListener('click', overlayWindowClose);
 
 //закрытие модального окна по кнопке
 function overlayWindowClose() {

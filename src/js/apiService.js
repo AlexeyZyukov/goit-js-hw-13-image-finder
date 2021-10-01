@@ -29,7 +29,7 @@ searchForm.addEventListener("submit", (event) => {
     if (nameOfImage === inputField.value) {
       // console.log(inputField.value, nameOfImage); 
       // console.log(nameOfImage);
-      alert("Такой тип изображений уже в поиске, введите другое название")
+      alert("Такой название изображения уже найдено, введите другое название")
       return
     }
   }
@@ -52,6 +52,10 @@ searchForm.addEventListener("submit", (event) => {
       // const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
       // console.log(totalPages);
       console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
+      if (images.hits.length === 0) {
+        alert('изображаения с таким названием нет, уточните запрос')
+        return
+      }
       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
 
       buttonShowOnPageIncrease()
@@ -66,10 +70,9 @@ function buttonShowOnPageIncrease(value) {
   page += 1;
   console.log(page);
 
-  // Show button with text after first request
+  // Show button to load more after first request
   if (page > 1) {
     fetchImagesBtnAdditional.classList.add("is-visible");
-    //fetchImagesBtnAdditional.textContent = "Показать больше изображений";
   }
   // Check the end of the collection to display an alert
   if (page > value) {
@@ -81,6 +84,9 @@ fetchImagesBtnAdditional.addEventListener('click', (event) => {
   event.preventDefault;
   fetchImages()
     .then((images) => {
+      // if (images.hits.length === 0) {
+      //   return
+      // }
       const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
       // console.log(totalPages);
       // console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
