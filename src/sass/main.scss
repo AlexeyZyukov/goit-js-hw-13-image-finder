@@ -2,8 +2,9 @@
  * Главный файл стилей.
  * Все паршалы подключаются сюда.
  */
-@import 'variables';
-@import 'modalWindow';
+// @import './general';
+@import './variables';
+@import './modalWindow';
 
 // Стили для файла с примером HTML-фрагмента
 // @import './example';
