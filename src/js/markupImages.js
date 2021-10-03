@@ -1,12 +1,11 @@
 'use strict';
 
+//====формирует разметку карточки=====
 export function markupImages(images) {
-  //формирует разметку карточки
   // console.log(images);
   return images
     .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads, pageURL }) => {
       return `<div class="photo-card">
- 
   <img src=${webformatURL} alt=${tags} data-source=${largeImageURL} />
 
   <div class="stats">
