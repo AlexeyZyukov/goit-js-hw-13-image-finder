@@ -23,7 +23,7 @@ body {
     'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
   height: 100vh;
-  /* background: #eff8ec; */
+
   background-image: url(./images/boardwalk-569314_1920.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -46,7 +46,7 @@ p {
 }
 
 .search-form {
-  margin-left: auto;
+  margin-left: 40%;
 }
 
 .fetch-additional {
@@ -54,8 +54,8 @@ p {
 }
 .fetch-additional.is-visible {
   opacity: 1;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 40%;
+  /* margin-right: auto; */
   margin-bottom: 30px;
 }
 /*============================================
