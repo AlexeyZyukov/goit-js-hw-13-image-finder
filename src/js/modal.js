@@ -1,7 +1,5 @@
 'use strict'
-import { galleryImagesList, lightbox, lightboxImage, lightboxClose } from './constants';
-
-// galleryImagesList.addEventListener('click', openModal);
+import { lightbox, lightboxImage, lightboxClose } from './constants';
 
 export function openModal(event) {
     if (event.target.nodeName !== "IMG") {

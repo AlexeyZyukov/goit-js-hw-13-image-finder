@@ -29,7 +29,7 @@ searchForm.addEventListener("submit", (event) => {
     if (nameOfImage === inputField.value) {
       // console.log(inputField.value, nameOfImage); 
       // console.log(nameOfImage);
-      alert("Такой название изображения уже найдено, введите другое название")
+      alert("Изображение такого типа уже найдено, введите другое название")
       return
     }
   }
@@ -53,7 +53,7 @@ searchForm.addEventListener("submit", (event) => {
       // console.log(totalPages);
       console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
       if (images.hits.length === 0) {
-        alert('изображаения с таким названием нет, уточните запрос')
+        alert('Изображаения с таким названием нет, уточните запрос')
         return
       }
       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
@@ -76,7 +76,7 @@ function buttonShowOnPageIncrease(value) {
   }
   // Check the end of the collection to display an alert
   if (page > value) {
-    return toggleAlertPopup();
+    return toggleAlertPopupEndOfItems();
   }
 }
 //==========================
@@ -106,7 +106,7 @@ function clearContent() {
   galleryImagesList.innerHTML = '';
 };
 
-function toggleAlertPopup() {
+function toggleAlertPopupEndOfItems() {
   if (isAlertVisible) {
     return;
   }

@@ -2,9 +2,9 @@ html {
   box-sizing: border-box;
 }
 
-* {
+/* * {
   outline: 1px solid #ee3131;
-}
+} */
 
 *,
 *::before,
@@ -51,15 +51,14 @@ p {
 
 .fetch-additional {
   opacity: 0;
-}
-.fetch-additional.is-visible {
-  opacity: 1;
   margin-left: 40%;
-  /* margin-right: auto; */
   margin-bottom: 30px;
 }
-/*============================================
-/*flex*/
+
+.fetch-additional.is-visible {
+  opacity: 1;
+}
+/*===flex box of images==========*/
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -78,6 +77,11 @@ p {
   background-color: #caf8f8;
   border-radius: 5%;
   overflow: hidden;
+}
+
+.photo-card_img {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .stats {
@@ -104,7 +108,7 @@ p {
   right: 30px;
   z-index: 10;
   background-color: #ee3131;
-  color: #5eff01;
+  color: rgb(2, 250, 35);
   cursor: pointer;
   border-radius: 5px;
   font-size: 18px;

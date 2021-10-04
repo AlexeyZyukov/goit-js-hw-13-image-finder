@@ -6,7 +6,7 @@ export function markupImages(images) {
   return images
     .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads, pageURL }) => {
       return `<div class="photo-card">
-  <img src=${webformatURL} alt=${tags} data-source=${largeImageURL} />
+  <img src=${webformatURL} alt=${tags} data-source=${largeImageURL} class="photo-card_img"/>
 
   <div class="stats">
     <p class="stats-item">
