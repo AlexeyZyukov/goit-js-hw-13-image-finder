@@ -39,6 +39,7 @@ searchForm.addEventListener("submit", (event) => {
       nameOfImage = inputField.value;
       // console.log(nameOfImage);
       clearContent();
+      page = 1;
       // console.log(nameOfImage);
     }
   }
@@ -115,7 +116,7 @@ function toggleAlertPopupEndOfItems() {
   setTimeout(() => {
     alertPopup.classList.remove("is-visible");
     isAlertVisible = false;
-  }, 4000);
+  }, 2000);
 };
 
 

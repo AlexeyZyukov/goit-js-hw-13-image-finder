@@ -1,8 +1,8 @@
 'use strict'
-import axios from 'axios';
+// import axios from 'axios';
 import { nameOfImage, page, limit } from './apiService';
 
-console.dir('axios', axios);
+// console.dir('axios', axios);
 
 export function fetchImages() { //get information from backend
   const params = new URLSearchParams({
