@@ -27,13 +27,13 @@ searchForm.addEventListener("submit", (event) => {
   }
   if (nameOfImage) {
     if (nameOfImage === inputField.value) {
-      // console.log(inputField.value, nameOfImage); 
+      // console.log(inputField.value); 
       // console.log(nameOfImage);
-      alert("Изображение такого типа уже найдено, введите другое название")
+      alert("Поиск изображения с таким названием был выполнен, введите другое название")
       return
     }
   }
-  if (nameOfImage) {
+  if (nameOfImage) { //выполненеие поиска изображения
     if (nameOfImage !== inputField.value) {
       // console.log(inputField.value, nameOfImage);
       nameOfImage = inputField.value;
@@ -96,7 +96,7 @@ function buttonShowOnPageIncrease(value) {
   page += 1;
   console.log(page);
 
-  if (page > 1 && images.hits.length > 0) {
+  if (page > 1) { //&& images.hits.length > 0
     fetchImagesBtnAdditional.classList.add("is-visible");
   }
 }
