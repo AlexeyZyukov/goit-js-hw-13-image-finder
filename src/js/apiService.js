@@ -95,11 +95,10 @@ function buttonShowOnPageIncrease(value) {
   // Show button to load more after first request
   page += 1;
   console.log(page);
-  fetchImagesBtnAdditional.classList.add("is-visible");
-  // if (page > 1) {
-  //   fetchImagesBtnAdditional.classList.add("is-visible");
-  // }
 
+  if (page > 1 && images.hits.length > 0) {
+    fetchImagesBtnAdditional.classList.add("is-visible");
+  }
 }
 //=========================
 function renderImages(value) {
