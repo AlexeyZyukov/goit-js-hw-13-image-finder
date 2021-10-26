@@ -64,23 +64,8 @@ searchForm.addEventListener("submit", (event) => {
     })
     .catch((error) => console.log(error));
 });
-//=================================================
 
-//Show add_button when page number inreased
-function buttonShowOnPageIncrease(value) {
-  page += 1;
-  console.log(page);
-
-  // Show button to load more after first request
-  if (page > 1) {
-    fetchImagesBtnAdditional.classList.add("is-visible");
-  }
-  // Check the end of the collection to display an alert
-  if (page > value) {
-    return toggleAlertPopupEndOfItems();
-  }
-}
-//==========================
+//===========добавление новых изображений вниз документа===============
 fetchImagesBtnAdditional.addEventListener('click', (event) => {
   event.preventDefault;
   fetchImages()
@@ -97,6 +82,25 @@ fetchImagesBtnAdditional.addEventListener('click', (event) => {
     })
     .catch((error) => console.log(error));
 });
+//=================================================
+
+//Show add_button when page number inreased
+function buttonShowOnPageIncrease(value) {
+
+  // Check the end of the collection to display an alert
+  if (page > value) {
+    fetchImagesBtnAdditional.classList.remove("is-visible");
+    return toggleAlertPopupEndOfItems();
+  }
+  // Show button to load more after first request
+  page += 1;
+  console.log(page);
+  fetchImagesBtnAdditional.classList.add("is-visible");
+  // if (page > 1) {
+  //   fetchImagesBtnAdditional.classList.add("is-visible");
+  // }
+
+}
 //=========================
 function renderImages(value) {
   const markup = markupImages(value)
