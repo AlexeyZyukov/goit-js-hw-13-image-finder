@@ -28,9 +28,8 @@ searchForm.addEventListener("submit", (event) => {
     return
   }
 
-  //выполненеие поиска изображения
+  //выполненеие поиска нового типа изображения
   if (nameOfImage !== inputField.value) {
-    // console.log(inputField.value, nameOfImage);
     nameOfImage = inputField.value;
     // console.log(nameOfImage);
     clearContent();
@@ -49,10 +48,12 @@ searchForm.addEventListener("submit", (event) => {
       // console.log(totalPages);
       console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
       if (images.hits.length === 0) {
-        alert('Изображаения с таким названием нет, уточните запрос')
+        alert('Изображения с таким названием нет, уточните запрос')
         return
       }
       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
+      let pageHeight = document.body.scrollHeight;
+      console.log(pageHeight);
 
       buttonShowOnPageIncrease()
 
@@ -60,27 +61,29 @@ searchForm.addEventListener("submit", (event) => {
     .catch((error) => console.log(error));
 });
 
-//===========добавление новых изображений вниз страницы===============
+//===========добавление новых изображений вниз страницы при клике на кнопке "добавить"===============
 fetchImagesBtnAdditional.addEventListener('click', (event) => {
   event.preventDefault;
   fetchImages()
     .then((images) => {
-      // if (images.hits.length === 0) {
-      //   return
-      // }
       const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
       // console.log(totalPages);
       // console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
       renderImages(images.hits); //получение доступа к Массиву изображений в Объекте Json; 
       //при обращении к значению объекта hits => через Array, св - во length сохраняется
-      buttonShowOnPageIncrease(totalPages);
 
-      //====прокрутка экрана при загрузке новых изображений====
-      const element = document.querySelector('#my-element-selector');
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-      });
+      //====прокрутка экрана при загрузке новых изображений при клике на кнопке "добавить"====
+      let pageHeight = document.body.scrollHeight;
+      console.log(pageHeight);
+      window.scrollTo(0, pageHeight);
+
+      // galleryImagesList.scrollIntoView({
+      //   behavior: "smooth",
+      //   block: "end"
+      // });
+      console.log(pageHeight);
+
+      buttonShowOnPageIncrease(totalPages);
     })
     .catch((error) => console.log(error));
 });
