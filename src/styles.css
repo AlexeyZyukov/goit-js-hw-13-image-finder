@@ -42,15 +42,13 @@ p {
 }
 
 .btn {
-  border-radius: 3px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .button {
-  cursor: pointer;
-
-  padding: 10px;
+  padding: 5px;
   background-color: #b8f8b6;
-  border-radius: 10px;
   box-shadow: 4px 0px 37px -9px rgba(0, 0, 0, 0.43);
   transition: background-color 250ms;
   -webkit-box-shadow: 4px 0px 37px -9px rgba(0, 0, 0, 0.43);
