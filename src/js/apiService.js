@@ -54,6 +54,9 @@ searchForm.addEventListener("submit", (event) => {
       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
       // let pageHeight = document.body.scrollHeight;
       // console.log(pageHeight);
+      let pageHeight = document.body.scrollHeight;
+      console.log(pageHeight);
+      window.scrollTo(0, pageHeight);
 
       buttonShowOnPageIncrease()
 
