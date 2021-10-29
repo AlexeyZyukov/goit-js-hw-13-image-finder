@@ -10,23 +10,23 @@ export function markupImages(images) {
 
   <div class="stats">
     <p class="stats-item">
-      <li class="material-icons">thumb_up</li>
-      likes: ${likes}
+      <i class="material-icons">thumb_up</i>
+      ${likes}
     </p>
     <p class="stats-item">
-      <li class="material-icons">visibility</li>
-      views: ${views}
+      <i class="material-icons">visibility</i>
+      ${views}
     </p>
     <p class="stats-item">
-      <li class="material-icons">comment</li>
-      comments: ${comments}
+      <i class="material-icons">comment</i>
+      ${comments}
     </p>
     <p class="stats-item">
-      <li class="material-icons">cloud_download</li>
-      downloads: ${downloads}
-    </p class="stats-item">
+      <i class="material-icons">cloud_download</i>
+      ${downloads}
+    </p>
     <a href="${pageURL}" class="stats-item home-page-link" target="blank">
-    <li class="material-icons">home</li>
+    <i class="material-icons">home</i>
       home page
       </a>
   </div>
