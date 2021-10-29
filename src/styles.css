@@ -131,27 +131,9 @@ p {
   transform: translatey(0);
 }
 
-/*.posts {
-  margin: 0;
-  list-style: none;
-  margin-bottom: 16px;
+.material-icons {
+  margin-right: 5px;
+  height: 5px;
+  width: 5px;
+  font-size: 10px;
 }
-
-.posts li:not(:last-child) {
-  margin-bottom: 16px;
-}
-
-.post-title {
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.post-title:first-letter {
-  text-transform: uppercase;
-}
-
-.post-body {
-  margin: 0;
-} */
