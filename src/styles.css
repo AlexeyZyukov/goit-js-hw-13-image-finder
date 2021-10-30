@@ -84,9 +84,9 @@ p {
 .photo-card {
   display: flex;
   flex-wrap: wrap;
-  flex-basis: calc((100% - 10px * 3) / 3);
+  flex-basis: calc((100% - 10px * 4) / 4);
   align-content: space-between;
-  min-height: 100px;
+  max-height: 400px;
   padding: 10px;
   margin-right: auto;
   margin-bottom: 10px;
@@ -96,7 +96,7 @@ p {
 }
 
 .photo-card_img {
-  min-height: 100px;
+  max-height: 300px;
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;

@@ -52,11 +52,6 @@ searchForm.addEventListener("submit", (event) => {
         return
       }
       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
-      // let pageHeight = document.body.scrollHeight;
-      // console.log(pageHeight);
-      let pageHeight = document.body.scrollHeight;
-      console.log(pageHeight);
-      window.scrollTo(0, pageHeight);
 
       buttonShowOnPageIncrease()
 
@@ -80,10 +75,12 @@ fetchImagesBtnAdditional.addEventListener('click', (event) => {
       // console.log(pageHeight);
       // window.scrollTo(0, pageHeight);
 
-      galleryImagesList.scrollIntoView({
-        behavior: "smooth",
-        block: "end"
-      });
+      setTimeout(() => {
+        galleryImagesList.scrollIntoView({
+          behavior: "smooth",
+          block: "end"
+        });
+      }, 500);
       // console.log(pageHeight);
 
       buttonShowOnPageIncrease(totalPages);
