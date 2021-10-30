@@ -44,8 +44,7 @@ searchForm.addEventListener("submit", (event) => {
 
   fetchImages()
     .then((images) => {
-      // const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
-      // console.log(totalPages);
+
       console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
       if (images.hits.length === 0) {
         alert('Изображения с таким названием нет, уточните запрос')
@@ -54,9 +53,10 @@ searchForm.addEventListener("submit", (event) => {
       renderImages(images.hits); //получние доступа к Массиву изображений в Объекте Json
 
       buttonShowOnPageIncrease()
-
     })
     .catch((error) => console.log(error));
+
+
 });
 
 //===========добавление новых изображений вниз страницы при клике на кнопке "добавить"===============
@@ -67,23 +67,62 @@ fetchImagesBtnAdditional.addEventListener('click', (event) => {
       const totalPages = Math.ceil(images.total / limit); //get quantity of pages in the images'collection
       // console.log(totalPages);
       // console.dir(images.hits); //при обращении к значению объекта hits => Array, св-во length сохраняется
-      renderImages(images.hits); //получение доступа к Массиву изображений в Объекте Json; 
+
+      renderImages(images.hits); //получение доступа к Массиву изображений в Объекте Json;
       //при обращении к значению объекта hits => через Array, св - во length сохраняется
+      // let arrayOfImages = images.hits; //проверка полученного массива данных
+      // console.dir(arrayOfImages);
 
       //====прокрутка экрана при загрузке новых изображений при клике на кнопке "добавить"====
-      // let pageHeight = document.body.scrollHeight;
-      // console.log(pageHeight);
-      // window.scrollTo(0, pageHeight);
-
       setTimeout(() => {
         galleryImagesList.scrollIntoView({
           behavior: "smooth",
           block: "end"
         });
       }, 500);
+      // setTimeout(() => {
+      //   let pageHeight = document.body.scrollHeight;
+      //   window.scrollTo(0, pageHeight);
+      // }, 500);
       // console.log(pageHeight);
 
       buttonShowOnPageIncrease(totalPages);
+
+      //==получение id изображения==
+      // const targetImageId = images.hits[0].id //arrayOfImages[0].id;
+      // console.log(targetImageId);
+      // const targetImage = images.hits[0]
+      // console.dir(targetImage);
+      // let coordsTargetImage = targetImage.getBoundingClientRect();
+      // console.dir(coordsTargetImage);
+
+      // document.addEventListener('DOMContentLoaded', function () {
+
+      //   let elem = document.getElementById('coords-show-mark');
+
+      //   if (elem) {
+      //     elem.onclick = function () {
+
+      //       function createMessageUnder(elem, text) {
+      //         let coords = elem.getBoundingClientRect();
+      //         let message = document.createElement('div');
+      //         message.style.cssText = "position:fixed; color: red";
+
+      //         message.style.left = coords.left + "px";
+      //         message.style.top = coords.bottom + "px";
+
+      //         message.innerHTML = text;
+
+      //         return message;
+      //       }
+
+      //       let message = createMessageUnder(elem, 'Hello, world!');
+      //       document.body.append(message);
+      //       setTimeout(() => message.remove(), 5000);
+      //     }
+      //   }
+
+      // });
     })
     .catch((error) => console.log(error));
 });
