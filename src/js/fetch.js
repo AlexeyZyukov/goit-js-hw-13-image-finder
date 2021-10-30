@@ -3,7 +3,7 @@
 import { nameOfImage, page, limit } from './apiService';
 
 // console.dir('axios', axios);
-
+const BASE_URL = "https://pixabay.com/api/"
 export function fetchImages() { //get information from backend
   const params = new URLSearchParams({
     "q": nameOfImage,
@@ -12,7 +12,7 @@ export function fetchImages() { //get information from backend
     "image_type": "photo",
   });
 
-  return fetch(`https://pixabay.com/api/?key=22969480-c3583c2b4b1ca4646f49ed52f&${params}`)
+  return fetch(`${BASE_URL}?key=22969480-c3583c2b4b1ca4646f49ed52f&${params}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(response.status);
