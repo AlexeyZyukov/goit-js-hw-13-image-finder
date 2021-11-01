@@ -33,7 +33,6 @@ searchForm.addEventListener("submit", (event) => {
     nameOfImage = inputField.value;
     // console.log(nameOfImage);
     clearContent();
-    page = 1;
     // console.log(nameOfImage);
   }
 
@@ -152,6 +151,7 @@ function renderImages(value) {
 
 function clearContent() {
   galleryImagesList.innerHTML = '';
+  page = 1;
 };
 
 function toggleAlertPopupEndOfItems() {
